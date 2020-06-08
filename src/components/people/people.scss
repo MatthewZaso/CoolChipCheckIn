@@ -1,0 +1,11 @@
+.people {
+  display: block;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+.people__headings {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
