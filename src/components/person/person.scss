@@ -1,4 +1,5 @@
 .person {
   display: grid;
   grid-template-columns: [name] 1fr [notes] 1fr [signin] 1fr;
+  padding: 5px;
 }

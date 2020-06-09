@@ -9,12 +9,18 @@ interface IProps {
   signedOutTime?: string
 }
 
-export default function Person({ name, notes }:IProps) {
+export default function Person({ name, notes, signedIn }:IProps) {
   return (
     <tr className="person">
       <td className="person__name">{name}</td>
       <td className="person__notes">{notes}</td>
-      <td className="person__signin">Signed Out</td>
+      <td className="person__signin">
+        {signedIn ? (
+          <button className="btn btn--smaller btn--outline">Sign out</button>
+        ) : (
+          <p>Signed Out</p>
+        )}
+      </td>
     </tr>
   )
 }

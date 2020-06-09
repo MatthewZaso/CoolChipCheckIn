@@ -17,16 +17,18 @@ interface IProps {
 export function People({ users }: IProps) {
   return (
     <table className="people">
-      <th className="people__headings">
-        <td>Name</td>
-        <td>Notes</td>
-        <td>Signed out</td>
-      </th>
-      {users && users.map((user) => (
-        <Person name={user.name} notes={user.notes} signedIn={false} />
-      ))}
-      <Person name="Esteban Arango" notes="Frisbee and Vegan food" signedIn={false} />
-      <Person name="Ryan Labouve" notes="Everything about Oklahoma" signedIn={false} />
+      <thead>
+        <tr className="people__headings">
+          <th>Name</th>
+          <th>Notes</th>
+          <th>Signed out</th>
+        </tr>
+      </thead>
+      <tbody>
+        {users && users.map((user, key) => (
+          <Person key={key} name={user.name} notes={user.notes} signedIn={user.sign_out === null} />
+        ))}
+      </tbody>
     </table>
   )
 }
