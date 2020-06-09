@@ -5,11 +5,6 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx"]
   },
-  devServer: {
-    open: 'http://localhost:9000',
-    port: 9000,
-    publicPath: "/",
-  },
   module: {
     rules: [
       {

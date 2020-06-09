@@ -3,13 +3,15 @@ import { useState } from 'react';
 import classnames from 'classnames'
 import './registration-modal.scss'
 import { registerUser } from '../../lib/lib';
+import { IUser } from '../people/People';
 
 interface IProps {
   modalOpen: boolean,
   onClose: () => void
+  onRegister: (user: IUser) => void
 }
 
-export default function RegistrationModal({ modalOpen, onClose }:IProps) {
+export default function RegistrationModal({ modalOpen, onClose, onRegister }:IProps) {
   const [name, setName] = useState<string>('');
   const [notes, setNotes] = useState<string>('');
 
@@ -19,8 +21,8 @@ export default function RegistrationModal({ modalOpen, onClose }:IProps) {
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    registerUser(name, notes).then(() => {
-      onClose();
+    registerUser(name, notes).then((user) => {
+      onRegister(user);
     })
   }
 

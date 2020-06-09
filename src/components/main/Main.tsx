@@ -1,5 +1,5 @@
-import * as React from "react";
-import { useEffect, useState } from "react";
+import * as React from 'react';
+import { useEffect, useState } from 'react';
 import Search from '../search/Search';
 import Filter from '../filter/Filter';
 import RegistrationModal from '../registration-modal/RegistrationModal';
@@ -8,11 +8,11 @@ import { getEntries } from "../../lib/lib";
 import './main.scss';
 
 export default function CoolChipCheckin() {
-  const [search, setSearch] = useState<string | null>(null)
-  const [users, setUsers] = useState<IUser[]>([])
-  const [modalOpen, setModalOpen] = useState<boolean>(false)
-  const [signedOutOnly, setSignedOutOnly] = useState<boolean>(false)
-  const [error, setError] = useState<string | null>(null)
+  const [search, setSearch] = useState<string | null>(null);
+  const [users, setUsers] = useState<IUser[]>([]);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [signedOutOnly, setSignedOutOnly] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     getEntries(search).then((users) => {
@@ -24,10 +24,15 @@ export default function CoolChipCheckin() {
 
   function onSearch(e: React.ChangeEvent<HTMLInputElement>) {
     const val = e.target.value;
-    setSearch(val)
+    setSearch(val);
   }
 
-  const filtered = users.filter((user) => {
+  function onRegister(entry: IUser) {
+    setModalOpen(false);
+    setUsers([ entry, ...users ]);
+  }
+
+  const filtered = users.filter((user: IUser) => {
     return signedOutOnly ? user.sign_out !== null : true;
   })
 
@@ -43,9 +48,9 @@ export default function CoolChipCheckin() {
       <Filter name="Signed Out" onClick={(active: boolean) => setSignedOutOnly(active)} />
       <People users={filtered} />
       {error && (
-        <div className="error-message">Testing</div>
+        <div className="error-message">{error}</div>
       )}
-      <RegistrationModal modalOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      <RegistrationModal modalOpen={modalOpen} onClose={() => setModalOpen(false)} onRegister={(entry) => onRegister(entry)} />
     </section>
   )
 }

@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import Person from '../person/Person'
 
 import './people.scss';

@@ -7,11 +7,13 @@ interface IData {
 interface IEntries {
   type: string,
   id: number,
-  attributes: {
-    name: string,
-    notes: string,
-    sign_out: string | null,
-  }
+  attributes: IAttributes
+}
+
+interface IAttributes {
+  name: string,
+  notes: string,
+  sign_out: string | null,
 }
 
 type IMethod = "GET" | "POST" | "PATCH"
@@ -50,12 +52,25 @@ export function getEntries(query?: string): Promise<IUser[] | null> {
     })
 }
 
-export function registerUser(name: string, notes: string): Promise<Response> {
+export function registerUser(name: string, notes: string): Promise<IUser> {
   const url = `/api/entries?data[attributes][name]=${name}&data[attributes][notes]=${notes}`;
-  return fetchFromAPI(url, "POST");
+  return fetchFromAPI(url, "POST")
+    .then((res) => res.json())
+    .then(({ data }: { data: IEntries }) => {
+      return {
+        id: data.id,
+        name: data.attributes.name,
+        notes: data.attributes.notes,
+        sign_out: data.attributes.sign_out
+      }
+    })
 }
 
-export function signOutUser(id: number): Promise<Response> {
+export function signOutUser(id: number): Promise<string | null> {
   const url = `/api/entries/sign_out?data[id]=${id}`;
-  return fetchFromAPI(url, "POST");
+  return fetchFromAPI(url, "POST")
+    .then((res) => res.json())
+    .then((json: { data: IEntries }) => {
+      return json.data.attributes.sign_out;
+    })
 }

@@ -4,7 +4,7 @@
   "description": "Cool Chip's visitor checkin system.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --no-inline --open"
+    "start": "npm install && npx webpack"
   },
   "author": "Matthew Zaso (zaso.matthew@gmail.com)",
   "license": "ISC",
