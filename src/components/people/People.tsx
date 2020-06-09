@@ -25,9 +25,11 @@ export function People({ users }: IProps) {
         </tr>
       </thead>
       <tbody>
-        {users && users.map((user, key) => (
+        {users ? users.map((user, key) => (
           <Person key={key} id={user.id} name={user.name} notes={user.notes} signedOut={user.sign_out} />
-        ))}
+        )) : (
+          <p>No records found!</p>
+        )}
       </tbody>
     </table>
   )

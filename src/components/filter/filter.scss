@@ -1,4 +1,29 @@
-.person {
-  display: grid;
-  grid-template-columns: [name] 1fr [notes] 1fr [signin] 1fr;
+@import '../../styles/colors.scss';
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  grid-column: search;
+  margin-top: 10px;
+}
+
+.filter-text {
+  margin-right: 10px;
+}
+
+.filter {
+  border-radius: 15px;
+  padding: 5px 30px;
+  border: 1px solid black;
+  background: none;
+  font-size: 13px;
+  cursor: pointer;
+
+  &--active {
+    background-color: $color-brand;
+    color: white;
+    border: 1px solid $color-brand;
+  }
 }

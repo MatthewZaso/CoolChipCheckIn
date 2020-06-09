@@ -30,7 +30,8 @@ export function getEntries(query?: string): Promise<IUser[] | null> {
   let search = '';
 
   if (query) {
-    search = `?filter[name]="${encodeURIComponent(query)}"`;
+    search = `?filter[name]=${query}`;
+    ///api/entries?filter[name]="Jane%20Doe"
   }
 
   const url = `/api/entries${search}`
@@ -54,7 +55,7 @@ export function registerUser(name: string, notes: string): Promise<Response> {
   return fetchFromAPI(url, "POST");
 }
 
-export function signOutUser(id: number) {
+export function signOutUser(id: number): Promise<Response> {
   const url = `/api/entries/sign_out?data[id]=${id}`;
   return fetchFromAPI(url, "POST");
 }

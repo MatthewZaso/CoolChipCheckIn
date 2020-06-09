@@ -13,8 +13,21 @@ html {
   max-width: 100%;
   margin: 7%;
   display: grid;
-  grid-template-rows: [nav] auto [body] auto [pagination] auto;
-  grid-template-columns: [logo] 1fr [search] 1fr [registration] 1fr;
+  grid-template-columns: [logo] 1fr [search] 2fr [registration] 1fr;
+  grid-column-gap: 8px;
   border: 1px solid $color-slate-65;
   padding: 30px;
+}
+
+.error-message {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: $color-brand;
+  color: white;
+  display: flex;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
 }

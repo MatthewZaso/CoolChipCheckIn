@@ -39,7 +39,7 @@ export default function RegistrationModal({ modalOpen, onClose }:IProps) {
           <textarea onChange={(e) => setNotes(e.target.value)} placeholder="Notes" name="notes" id="notes" />
           <div className="registration-modal__btn-container">
             <button type="submit" className="register-btn btn btn--brand">
-              Register&nbsp;&nbsp;<i className="far fa-paper-plane"></i>
+              Save&nbsp;&nbsp;<i className="far fa-paper-plane"></i>
             </button>
           </div>
         </form>

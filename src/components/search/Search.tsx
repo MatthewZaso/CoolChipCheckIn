@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import { throttle } from 'lodash';
 import './search.scss';
 
 interface IProps {
@@ -7,10 +7,13 @@ interface IProps {
 }
 
 export default function Search({ onSearch }: IProps) {
+
+  const throttled = throttle(onSearch, 500);
+
   return (
     <div className="search">
       <form>
-        <input type="text" onChange={onSearch} placeholder="Search"></input>
+        <input type="text" onChange={throttled} placeholder="Search"></input>
       </form>
     </div>
   )

@@ -1,4 +1,5 @@
-import * as React from "react";
+import * as React from 'react';
+import { useState } from 'react';
 import { signOutUser } from '../../lib/lib';
 import './person.scss'
 
@@ -10,8 +11,11 @@ interface IProps {
 }
 
 export default function Person({ id, name, notes, signedOut }:IProps) {
+  const [signingOut, setSigningOut] = useState<boolean>(false);
+
   function onSignOut() {
-    signOutUser(id);
+    setSigningOut(true);
+    signOutUser(id).then(() => setSigningOut(false));
   }
 
   const date = new Date(signedOut);
@@ -21,7 +25,6 @@ export default function Person({ id, name, notes, signedOut }:IProps) {
     day: 'numeric',
     hour: 'numeric',
     minute: 'numeric',
-    second: 'numeric',
   }).format(date);
 
   return (
@@ -30,7 +33,9 @@ export default function Person({ id, name, notes, signedOut }:IProps) {
       <td className="person__notes">{notes}</td>
       <td className="person__signin">
         {signedOut === null ? (
-          <button onClick={onSignOut} className="btn btn--smaller btn--outline">Sign out</button>
+          <button onClick={onSignOut} className="btn btn--smaller btn--outline" disabled={signingOut}>
+            Sign out<i className="person__signin--spinner fas fa-spinner"></i>
+          </button>
         ) : (
           <p>{formattedDate}</p>
         )}

@@ -16,7 +16,7 @@ tbody {
 .people__headings {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  border-bottom: 1px solid $color-grayLighter;
+  grid-template-columns: 2fr 3fr 1fr;
+  border-bottom: 1px solid $color-slate-25;
   padding: 5px;
 }

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import Search from '../search/Search';
+import Filter from '../filter/Filter';
 import RegistrationModal from '../registration-modal/RegistrationModal';
 import { IUser, People } from '../people/People';
 import { getEntries } from "../../lib/lib";
@@ -8,12 +9,16 @@ import './main.scss';
 
 export default function CoolChipCheckin() {
   const [search, setSearch] = useState<string | null>(null)
-  const [users, setUsers] = useState<IUser[] | null>(null)
+  const [users, setUsers] = useState<IUser[]>([])
   const [modalOpen, setModalOpen] = useState<boolean>(false)
+  const [signedOutOnly, setSignedOutOnly] = useState<boolean>(false)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     getEntries(search).then((users) => {
       setUsers(users);
+    }).catch((err) => {
+      setError(err);
     })
   }, [search])
 
@@ -21,6 +26,10 @@ export default function CoolChipCheckin() {
     const val = e.target.value;
     setSearch(val)
   }
+
+  const filtered = users.filter((user) => {
+    return signedOutOnly ? user.sign_out !== null : true;
+  })
 
   return (
     <section className="cool-chip-check-in">
@@ -31,7 +40,11 @@ export default function CoolChipCheckin() {
       <button onClick={() => setModalOpen(true)} className="register-btn btn btn--brand">
         <i className="fas fa-user"></i>&nbsp;&nbsp;New visitor
       </button>
-      <People users={users} />
+      <Filter name="Signed Out" onClick={(active: boolean) => setSignedOutOnly(active)} />
+      <People users={filtered} />
+      {error && (
+        <div className="error-message">Testing</div>
+      )}
       <RegistrationModal modalOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
   )

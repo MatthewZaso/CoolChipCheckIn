@@ -1,5 +1,30 @@
+@import '../../styles/colors.scss';
+
 .person {
   display: grid;
-  grid-template-columns: [name] 1fr [notes] 1fr [signin] 1fr;
+  grid-template-columns: [name] 2fr [notes] 3fr [signin] 1fr;
   padding: 5px;
+  height: 45px;
+  border-bottom: 1px solid $color-grayLighter;
+  align-content: space-evenly;
+}
+
+.person__signin {
+  display: flex;
+  justify-content: flex-start;
+
+  p {
+    margin: 0;
+  }
+}
+
+.person__signin--spinner {
+  display: none;
+}
+
+.person__signin .btn:disabled {
+  .person__signin--spinner {
+    display: inline;
+    margin-left: 5px;
+  }
 }
