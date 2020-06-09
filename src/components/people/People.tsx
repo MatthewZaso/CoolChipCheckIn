@@ -26,7 +26,7 @@ export function People({ users }: IProps) {
       </thead>
       <tbody>
         {users && users.map((user, key) => (
-          <Person key={key} name={user.name} notes={user.notes} signedIn={user.sign_out === null} />
+          <Person key={key} id={user.id} name={user.name} notes={user.notes} signedOut={user.sign_out} />
         ))}
       </tbody>
     </table>

@@ -22,21 +22,17 @@ export default function CoolChipCheckin() {
     setSearch(val)
   }
 
-  function onRegister() {
-    setModalOpen(false)
-  }
-
   return (
     <section className="cool-chip-check-in">
       <div className="nav">
         <img src="https://dashboard.envoy.com/assets/images/logo-small-red-ba0cf4a025dd5296cf6e002e28ad38be.svg" alt="Envoy Logo" width="31" />
       </div>
       <Search onSearch={onSearch} />
-      <button className="register-btn btn btn--brand">
+      <button onClick={() => setModalOpen(true)} className="register-btn btn btn--brand">
         <i className="fas fa-user"></i>&nbsp;&nbsp;New visitor
       </button>
       <People users={users} />
-      <RegistrationModal modalOpen={modalOpen} onRegister={onRegister} />
+      <RegistrationModal modalOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
   )
 }

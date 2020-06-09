@@ -7,9 +7,12 @@
   top: 0;
   height: 100vh;
   width: 100vw;
-  display: grid;
-  grid-template-rows: 10vh [content] 1fr 10vh;
-  grid-template-columns: 10vw [content] 1fr 10vw;
+  grid-template-rows: auto [content] 500px auto;
+  grid-template-columns: auto [content] 80vh auto;
+
+  &--open {
+    display: grid;
+  }
 }
 
 .registration-modal__backdrop {
@@ -30,6 +33,7 @@
   width: 50px;
   padding: 0;
   cursor: pointer;
+  color: $color-brand;
 }
 
 .registration-modal__content {
@@ -39,4 +43,31 @@
   z-index: 1;
   padding: 100px 50px;
   position: relative;
+
+  label {
+    padding-top: 20px;
+  }
+
+  input,
+  textarea {
+    padding: 10px;
+    border-radius: 4px;
+    border: 2px solid $color-slate-65;
+  }
+}
+
+.registration-modal__header {
+  font-weight: 400;
+}
+
+.registration-modal__form {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: auto;
+}
+
+.registration-modal__btn-container {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 20px;
 }
