@@ -1,6 +1,8 @@
 # Cool Chip Check-In Frontend
 Envoy front-end take-home challenge
 
+![Screenshot](/screenshot.png?raw=true "Screenshot")
+
 ## Overview
 This is a basic visitor sign-in UI built on top of React. For development, it makes use of both TypeScript and SCSS for JS/CSS and is all compiled together via Webpack. 
 
@@ -13,6 +15,13 @@ Once the repo has been cloned or downloaded, cd into the directory and run...
 `npm run start` 
 
 ...to get started. This will run both `npm install` as well as `npx webpack` (in watch mode) and generate the `/dist` folder with the appropriate files. From there, you can open the `index.html` file in the root directory to view the application. No webserver has been configured for this project.
+
+## Tests
+Since tests were a required part of this exercise, I added Jest and Testing Library to the build and configured them to work with ts-jest. You can run tests by running...
+
+`npm run test`
+
+Mocks for the API calls can be found in the `__mocks__` directories in the project and are used to simulate the network requests.
 
 ## Implementation Notes
 - React isn't always the best option, but it seems like a perfect use case for this application, as it has a need for state management and constant re-rendering.
