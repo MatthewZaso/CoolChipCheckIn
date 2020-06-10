@@ -1,5 +1,5 @@
-import * as React from "react";
-import { throttle } from 'lodash';
+import * as React from 'react';
+import throttle from 'lodash.throttle';
 import './search.scss';
 
 interface IProps {
