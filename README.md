@@ -1,8 +1,6 @@
 # Cool Chip Check-In Frontend
 Envoy front-end take-home challenge
 
-![Cool Chip Check-In Image](https://drive.google.com/file/d/1l5-HROg1LEcxGzkrsmxzOuiH5dvTVDcr/view?usp=sharing)
-
 ## Overview
 This is a basic visitor sign-in UI built on top of React. For development, it makes use of both TypeScript and SCSS for JS/CSS and is all compiled together via Webpack. 
 
