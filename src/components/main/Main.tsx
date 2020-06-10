@@ -36,6 +36,8 @@ export default function CoolChipCheckin() {
     return signedOutOnly ? user.sign_out !== null : true;
   })
 
+  console.log(filtered);
+
   return (
     <section className="cool-chip-check-in">
       <div className="nav">
