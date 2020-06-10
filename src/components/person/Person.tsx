@@ -45,7 +45,7 @@ export default function Person({ id, name, notes, signedOut }:IProps) {
       <td className="person__name">{name}</td>
       <td className="person__notes">{notes}</td>
       <td className="person__signin">
-        {signedOut === null ? (
+        {signedOutTimestamp === null && signedOut === null ? (
           <button onClick={onSignOut} className="btn btn--smaller btn--outline" disabled={signingOut}>
             Sign out<i className="person__signin--spinner fas fa-spinner"></i>
           </button>
