@@ -4,7 +4,7 @@ import Search from '../search/Search';
 import Filter from '../filter/Filter';
 import RegistrationModal from '../registration-modal/RegistrationModal';
 import { IUser, People } from '../people/People';
-import { getEntries } from "../../lib/lib";
+import { getEntries } from '../../lib/lib';
 import './main.scss';
 
 export default function CoolChipCheckin() {

@@ -24,7 +24,7 @@ export function People({ users }: IProps) {
           <th>Signed out</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="people-list">
         {users ? users.map((user, key) => (
           <Person key={key} id={user.id} name={user.name} notes={user.notes} signedOut={user.sign_out} />
         )) : (

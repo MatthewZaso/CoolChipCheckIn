@@ -36,7 +36,7 @@ export default function RegistrationModal({ modalOpen, onClose, onRegister }:IPr
         <h1 className="registration-modal__header">Hello! Please Register Below 👋</h1>
         <form className="registration-modal__form" onSubmit={onSubmit}>
           <label htmlFor="name">First and Last Name:</label>
-          <input type="text" onChange={(e) => setName(e.target.value)} placeholder="Name" name="name" id="names" required />
+          <input type="text" onChange={(e) => setName(e.target.value)} placeholder="Name" name="name" id="name" required />
           <label htmlFor="notes">Notes:</label>
           <textarea onChange={(e) => setNotes(e.target.value)} placeholder="Notes" name="notes" id="notes" />
           <div className="registration-modal__btn-container">
